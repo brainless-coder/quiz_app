@@ -1,7 +1,11 @@
+import 'package:flutter/widgets.dart';
+
 import 'question.dart';
 
 class QuizBrain {
   int _questionNumber = 0;
+  int score = 0;
+  bool last;
 
   List<Question> _questionBank = [
     Question('Gai ke 5 pao hote hai', false),
@@ -47,5 +51,19 @@ class QuizBrain {
 
   bool getQuestionAnswer() {
     return _questionBank[_questionNumber].questionAnswer;
+  }
+
+  bool isFinished() {
+    if (_questionNumber == _questionBank.length - 1) {
+      last = true;
+    } else {
+      last = false;
+    }
+    return last;
+  }
+
+  void reset() {
+    _questionNumber = 0;
+    score = 0;
   }
 }
